@@ -1,5 +1,5 @@
 :- use_module('hat.pl').
-
+:- style_check(-atom).
 
 %%
 % 'Main' testing predicate.
@@ -11,11 +11,21 @@ test_templating :-
 %%
 % We store the template here.
 test_template('
-<table id="books-table" class="hat-template">
-    ^make_table_rows^
-</table>
+<html>
+  <head>
+    <title>^page_title^</title>
+  </head>
+  <body>
+    <table id="books-table" class="hat-template">
+        ^make_table_rows^
+    </table>
+  </body>
+</html>
 ').
 
+%%
+% Page title
+page_title('Great Prolog Books').
 
 %%
 % Template callback
@@ -27,8 +37,7 @@ make_table_rows(ResolvedTemplate) :-
 %%
 % Callback helper predicate
 make_table_row([Author, Book], Row) :-
-    sformat(Row, '\n    <tr><td>~w</td><td>~w</td></tr>\n', [Author, Book]).
-
+    sformat(Row, '      <tr><td>~w</td><td>~w</td></tr>\n', [Author, Book]).
 
 %%
 % Data for the table rows.
@@ -38,6 +47,5 @@ author_of('Sterling/Shapiro', 'Art of Prolog').
 author_of('Clocksin/Mellish', 'Programming in Prolog').
 author_of('Okeefe', 'Craft of Prolog').
 author_of('Bratko', 'Prolog Programming for AI').
-
 
 :- test_templating.
