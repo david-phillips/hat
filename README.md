@@ -34,8 +34,8 @@ For instance, you might have,
 page_title('Favorite Prolog Books').
 ```
 
--The matching clauses must have an arity of 1.
--The argument of the clause must expect an unbound variable.
+- The matching clauses must have an arity of 1.
+- The argument of the clause must expect an unbound variable.
 
 The job of the clause is to bind its argument variable to a  
 value that will get placed into the template's markup.
