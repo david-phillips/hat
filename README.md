@@ -6,6 +6,7 @@ Hat templates are a mix of markup & code.
 
 They look like this:
 
+```
 my_template('
 <html>
   <head>
@@ -18,6 +19,7 @@ my_template('
   </body>
 </html>
 ').
+```
 
 Code occurs between two hat (aka caret) symbols and can  
 only be Prolog predicates.
